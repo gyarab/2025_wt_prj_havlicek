@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Races{% endblock %}
+
+{% block content %}
+<h2>Seznam závodů</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Distance (m)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for race in races %}
+        <tr>
+            <td>{{ race.name }}</td>
+            <td>{{ race.date }}</td>
+            <td>{{ race.location }}</td>
+            <td>{{ race.distance_m }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">Žádné závody</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

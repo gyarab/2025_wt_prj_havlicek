@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Runners{% endblock %}
+
+{% block content %}
+<h2>Seznam běžců</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Jméno</th>
+            <th>Příjmení</th>
+            <th>Datum narození</th>
+            <th>Klub</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for runner in runners %}
+        <tr>
+            <td>{{ runner.first_name }}</td>
+            <td>{{ runner.last_name }}</td>
+            <td>{{ runner.birth_date }}</td>
+            <td>{{ runner.club }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">Žádní běžci</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
