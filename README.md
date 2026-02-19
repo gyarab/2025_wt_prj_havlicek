@@ -1,25 +1,3 @@
-# 2025_wt_prj_havlicek
-Vznikla v předmětu Webové technologie na Gymnáziu Arabská ve školním roce 2025/2026.
+# RunStats – databáze běžeckých výkonů
 
-Local development
-Aplikace používá Python Virtual Environment, před spuštěním je potřeba vytvořit venv (pokud neexistuje):
-
-# Linux
-python3 -m venv venv
-
-# Windows
-py -3 -m venv venv
-Dále je třeba venv aktivovat:
-
-# [Linux]
-source ./venv/bin/activate
-
-# Windows - Bash
-source ./venv/Scripts/activate
-
-# Windows - Power shell
-...
-Je třeba ujistit se, že jsou nainstalovány všechny závislosti:
-
-# (venv)$
-pip install -r requirements.txt
+RunStats je webová aplikace sloužící jako databáze běžeckých výkonů atletů. Uživatelé mohou ukládat závody, osobní rekordy, mezičasy a tréninkové statistiky. Aplikace umožňuje filtrovat podle disciplíny (1500 m, 5000 m, 10 000 m atd.), roku nebo konkrétního závodu. Součástí bude také administrátorské rozhraní pro správu databáze. Cílem projektu je vytvořit přehledný a responzivní systém pro evidenci sportovních výkonů s využitím Django modelů, databáze a šablon.
