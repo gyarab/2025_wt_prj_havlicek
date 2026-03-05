@@ -1,11 +1,11 @@
 ## Running Results Database
 
-Tento projekt představuje webovou aplikaci sloužící jako databáze atletických výsledků. Cílem aplikace je umožnit evidenci a prohlížení informací o _běžcích_, _závodech_ a jejich _výsledcích_. Atletické závody generují velké množství dat a jejich organizace v databázovém systému umožňuje efektivní vyhledávání, analýzu a správu těchto informací.
+Tento projekt představuje webovou aplikaci sloužící jako databáze atletických výsledků. Cílem aplikace je umožnit evidenci a prohlížení informací o <u>běžcích</u>, <u>závodech</u> a jejich <u>výsledcích</u>. Atletické závody generují velké množství dat a jejich organizace v databázovém systému umožňuje efektivní vyhledávání, analýzu a správu těchto informací.
 
-Základními entitami systému jsou _běžec_, _závod_ a _výsledek_. Každý _závod_ obsahuje informace jako _název závodu_, _datum konání_, _místo konání_ a _délku tratě_. Každý _běžec_ je reprezentován atributy jako _jméno_, _příjmení_, _datum narození_ a _klub_. Entita _výsledek_ propojuje běžce a závod a obsahuje údaje o _čase výkonu_ a _umístění_.
+Základními entitami systému jsou <u>běžec</u>, <u>závod</u> a <u>výsledek</u>. Každý závod obsahuje informace jako <u>název závodu</u>, <u>datum konání</u>, <u>místo konání</u> a <u>délku tratě</u>. Každý běžec je reprezentován atributy jako <u>jméno</u>, <u>příjmení</u>, <u>datum narození</u> a <u>klub</u>. Entita výsledek propojuje běžce a závod a obsahuje údaje o <u>čase výkonu</u> a <u>umístění</u>.
 
-Systém rozlišuje několik rolí uživatelů. _Anonymní návštěvník_ může prohlížet seznam závodů a výsledků. _Registrovaný uživatel_ může přidávat nové výsledky nebo komentáře k závodům. _Administrátor_ má plná oprávnění ke správě databáze a může vytvářet, upravovat nebo mazat záznamy o běžcích, závodech a výsledcích.
+Systém rozlišuje několik rolí uživatelů. <u>Anonymní návštěvník</u> může prohlížet seznam závodů a výsledků. <u>Registrovaný uživatel</u> může přidávat nové výsledky nebo komentáře k závodům. <u>Administrátor</u> má plná oprávnění ke správě databáze a může vytvářet, upravovat nebo mazat záznamy o běžcích, závodech a výsledcích.
 
-Aplikace umožňuje filtrovat závody podle data nebo distance a zobrazovat výsledky jednotlivých běžců. V budoucnu může být systém rozšířen o statistiky výkonů, osobní rekordy nebo přehled sezónních výsledků.
+Aplikace umožňuje filtrovat závody podle data nebo distance a zobrazovat výsledky jednotlivých běžců. V budoucnu může být systém rozšířen o statistiky výkonů, <u>osobní rekordy</u> nebo přehled <u>sezóny</u>.
 
-Projekt je implementován pomocí frameworku Django a relační databáze, která využívá vazby mezi entitami typu jeden k mnoha, například mezi běžcem a jeho výsledky nebo mezi závodem a jeho účastníky.
+Projekt je implementován pomocí frameworku <u>Django</u> a relační <u>databáze</u>, která využívá vazby mezi entitami typu jeden k mnoha, například mezi běžcem a jeho výsledky nebo mezi závodem a jeho účastníky.
