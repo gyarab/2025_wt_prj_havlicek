@@ -1,3 +1,11 @@
-# RunStats – databáze běžeckých výkonů
+## Running Results Database
 
-RunStats je webová aplikace sloužící jako databáze běžeckých výkonů atletů. Uživatelé mohou ukládat závody, osobní rekordy, mezičasy a tréninkové statistiky. Aplikace umožňuje filtrovat podle disciplíny (1500 m, 5000 m, 10 000 m atd.), roku nebo konkrétního závodu. Cílem projektu je vytvořit přehledný a responzivní systém pro evidenci sportovních výkonů s využitím Django modelů, databáze a šablon.
+Tento projekt představuje webovou aplikaci sloužící jako databáze atletických výsledků. Cílem aplikace je umožnit evidenci a prohlížení informací o **běžcích**, **závodech** a jejich **výsledcích**. Atletické závody generují velké množství dat a jejich organizace v databázovém systému umožňuje efektivní vyhledávání, analýzu a správu těchto informací.
+
+Základními entitami systému jsou **běžec**, **závod** a **výsledek**. Každý závod obsahuje informace jako **název závodu**, **datum konání**, **místo konání** a **délku tratě**. Každý běžec je reprezentován atributy jako **jméno**, **příjmení**, **datum narození** a **klub**. Entita **výsledek** propojuje běžce a závod a obsahuje údaje o **čase výkonu** a **umístění**.
+
+Systém rozlišuje několik rolí uživatelů. **Anonymní návštěvník** může prohlížet seznam závodů a výsledků. **Registrovaný uživatel** může přidávat nové výsledky nebo komentáře k závodům. **Administrátor** má plná oprávnění ke správě databáze a může vytvářet, upravovat nebo mazat záznamy o běžcích, závodech a výsledcích.
+
+Aplikace umožňuje filtrovat závody podle data nebo distance a zobrazovat výsledky jednotlivých běžců. V budoucnu může být systém rozšířen o statistiky výkonů, **osobní rekordy** nebo přehled **sezóny**.
+
+Projekt je implementován pomocí frameworku **Django** a relační **databáze**, která využívá vazby mezi entitami typu jeden k mnoha, například mezi běžcem a jeho výsledky nebo mezi závodem a jeho účastníky.
