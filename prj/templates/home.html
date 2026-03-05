@@ -3,8 +3,14 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="text-center">
-    <h1 class="mb-4">Vítej na mé Django aplikaci</h1>
-    <p>Toto je základní stránka projektu. Využívá Bootstrap pro moderní vzhled a responzivní design.</p>
+<div class="text-center my-5">
+    <h1 class="mb-4">Vítej na <strong>RunBase</strong></h1>
+    
+    <p><strong>RunBase</strong> je webová aplikace určená pro evidenci a správu atletických závodů a výkonů. Poskytuje uživatelsky přívětivé prostředí pro prohlížení seznamu závodů, výsledků běžců a detailních informací o jednotlivých závodech a sportovcích. Aplikace využívá základní dědění šablon pro jednotný vzhled všech stránek, responzivní design pomocí <strong>Bootstrap</strong> a je připravena na propojení s databázovými modely a URL routingem. <strong>RunBase</strong> slouží jako startovací kostra pro tvorbu plnohodnotné sportovní databáze, kde mohou registrovaní uživatelé přidávat výsledky, komentáře a administrátoři spravovat celý obsah.</p>
+    
+    <div class="mt-4">
+        <a href="{% url 'races' %}" class="btn btn-primary btn-lg me-2">Seznam závodů</a>
+        <a href="{% url 'runners' %}" class="btn btn-secondary btn-lg">Seznam běžců</a>
+    </div>
 </div>
 {% endblock %}
