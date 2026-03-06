@@ -1,3 +1,17 @@
+# virtuální prostředí
 /venv/
+
+# databáze SQLite
 /prj/db.sqlite3
+
+# Python cache
 *.pyc
+__pycache__/
+
+# Django secret keys a lokální settings
+/prj/prj/settings_local.py
+.env
+
+# IDE a editor specifické soubory
+.vscode/
+.idea/

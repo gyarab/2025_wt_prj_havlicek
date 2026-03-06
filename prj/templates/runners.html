@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Runners{% endblock %}
+{% block title %}Seznam běžců{% endblock %}
 
 {% block content %}
 <h2>Seznam běžců</h2>
@@ -17,12 +17,14 @@
         {% for runner in runners %}
         <tr>
             <td>{{ runner.first_name }}</td>
-            <td>{{ runner.last_name }}</td>
-            <td>{{ runner.birth_date }}</td>
-            <td>{{ runner.club }}</td>
+            <td>{{ runner.last_name|default:"-" }}</td>
+            <td>{{ runner.birth_date|date:"d.m.Y"|default:"-" }}</td>
+            <td>{{ runner.club|default:"-" }}</td>
         </tr>
         {% empty %}
-        <tr><td colspan="4">Žádní běžci</td></tr>
+        <tr>
+            <td colspan="4">Žádní běžci</td>
+        </tr>
         {% endfor %}
     </tbody>
 </table>
