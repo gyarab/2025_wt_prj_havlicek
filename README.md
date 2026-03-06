@@ -10,7 +10,7 @@ Aplikace umožňuje filtrovat závody podle data nebo distance a zobrazovat výs
 
 Projekt je implementován pomocí frameworku **Django** a relační **databáze**, která využívá vazby mezi entitami typu jeden k mnoha, například mezi běžcem a jeho výsledky nebo mezi závodem a jeho účastníky.
 
-![Wireframe](C:\Users\daniel.havlicek.s\Desktop\WT\2025_wt_prj_havlicek\images\IMG_20260305_203358.jpg.pdf)
-            (C:\Users\daniel.havlicek.s\Desktop\WT\2025_wt_prj_havlicek\images\IMG_20260305_204221.jpg.pdf)
+![Wireframe](images\IMG_20260305_203358.jpg.pdf)
+            (images\IMG_20260305_204221.jpg.pdf)
 
-![Diagram](C:\Users\daniel.havlicek.s\Desktop\WT\2025_wt_prj_havlicek\images\IMG_20260305_204244.jpg.pdf)
+![Diagram](images\IMG_20260305_204244.jpg.pdf)
