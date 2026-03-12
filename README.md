@@ -13,4 +13,4 @@ Projekt je implementován pomocí frameworku **Django** a relační **databáze*
 ![Wireframe 1](images/Wireframe1.jpg)
 ![Wireframe 2](images/Wireframe2.jpg)
 ![Diagram](images/Diagram.jpg)
-![E-R Diagram](images/ER diagram.jpg)
+![E-R Diagram](images/ERDiagram.jpg)
