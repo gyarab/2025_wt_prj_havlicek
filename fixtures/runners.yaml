@@ -1,0 +1,15 @@
+- model: runners.runner
+  pk: 1
+  fields:
+    first_name: Daniel
+    last_name: Havlicek
+    birth_date: 2008-09-12
+    club: USK Praha
+
+- model: runners.runner
+  pk: 2
+  fields:
+    first_name: Vilém
+    last_name: Novák
+    birth_date: 2007-05-23
+    club: Slaný Runners

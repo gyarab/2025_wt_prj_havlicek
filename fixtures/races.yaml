@@ -1,0 +1,7 @@
+- model: runners.race
+  pk: 1
+  fields:
+    name: MČR 1500m
+    date: 2026-04-15
+    location: Praha
+    distance_m: 1500
