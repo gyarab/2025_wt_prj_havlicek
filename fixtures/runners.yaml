@@ -1,15 +1,63 @@
-- model: runners.runner
-  pk: 1
+- model: app.runner
+  pk: 3
   fields:
-    first_name: Daniel
-    last_name: Havlicek
-    birth_date: 2008-09-12
-    club: USK Praha
+    first_name: Anna
+    last_name: Kovářová
+    birth_date: 2009-11-05
+    club: AC Pardubice
 
-- model: runners.runner
-  pk: 2
+- model: app.runner
+  pk: 4
   fields:
-    first_name: Vilém
-    last_name: Novák
-    birth_date: 2007-05-23
+    first_name: Jan
+    last_name: Svoboda
+    birth_date: 2006-02-17
+    club: Sparta Praha
+
+- model: app.runner
+  pk: 5
+  fields:
+    first_name: Petra
+    last_name: Malá
+    birth_date: 2008-04-30
+    club: TJ Sokol Liberec
+
+- model: app.runner
+  pk: 6
+  fields:
+    first_name: Tomáš
+    last_name: Kučera
+    birth_date: 2005-12-09
+    club: Olympia Brno
+
+- model: app.runner
+  pk: 7
+  fields:
+    first_name: Klára
+    last_name: Dvořáková
+    birth_date: 2010-07-21
+    club: SK České Budějovice
+
+- model: app.runner
+  pk: 8
+  fields:
+    first_name: Lukáš
+    last_name: Marek
+    birth_date: 2007-09-01
+    club: SK Hradec
+
+- model: app.runner
+  pk: 9
+  fields:
+    first_name: Eliška
+    last_name: Černá
+    birth_date: 2009-03-14
+    club: KAC Kladno
+
+- model: app.runner
+  pk: 10
+  fields:
+    first_name: Matěj
+    last_name: Novotný
+    birth_date: 2006-06-02
     club: Slaný Runners

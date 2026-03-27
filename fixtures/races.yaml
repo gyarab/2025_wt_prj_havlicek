@@ -1,7 +1,79 @@
-- model: runners.race
+- model: app.race
   pk: 1
   fields:
-    name: MČR 1500m
-    date: 2026-04-15
-    location: Praha
+    name: Běh Praha
+    date: 2026-03-06
+    location: Praha 6
+    distance_m: 10000
+
+- model: app.race
+  pk: 2
+  fields:
+    name: Běh Vltavy
+    date: 2025-09-12
+    location: Praha 1
+    distance_m: 5000
+
+- model: app.race
+  pk: 3
+  fields:
+    name: Brněnský půlmaraton
+    date: 2026-05-10
+    location: Brno
+    distance_m: 21097
+
+- model: app.race
+  pk: 4
+  fields:
+    name: Ostravský maraton
+    date: 2026-10-04
+    location: Ostrava
+    distance_m: 42195
+
+- model: app.race
+  pk: 5
+  fields:
+    name: Noční běh Plzeň
+    date: 2025-08-22
+    location: Plzeň
+    distance_m: 10000
+
+- model: app.race
+  pk: 6
+  fields:
+    name: Běh Lipenska
+    date: 2027-06-12
+    location: Lipno
+    distance_m: 5000
+
+- model: app.race
+  pk: 7
+  fields:
+    name: Dětský běh Liberec
+    date: 2026-04-18
+    location: Liberec
     distance_m: 1500
+
+- model: app.race
+  pk: 8
+  fields:
+    name: Silniční běh Pardubice
+    date: 2026-09-05
+    location: Pardubice
+    distance_m: 10000
+
+- model: app.race
+  pk: 9
+  fields:
+    name: Běh na Ještěd
+    date: 2026-07-03
+    location: Ještěd
+    distance_m: 8000
+
+- model: app.race
+  pk: 10
+  fields:
+    name: Kutnohorský běh
+    date: 2026-11-14
+    location: Kutná Hora
+    distance_m: 5000
