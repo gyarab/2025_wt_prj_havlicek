@@ -25,7 +25,7 @@ def races(request):
         form = RaceForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Beh byl pridan.")
+            messages.success(request, "Běh byl přidán.")
             return redirect("races")
     else:
         form = RaceForm()
@@ -39,7 +39,7 @@ def runners(request):
         form = RunnerForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Bezec byl pridan.")
+            messages.success(request, "Běžec byl přidán.")
             return redirect("runners")
     else:
         form = RunnerForm()
@@ -53,7 +53,7 @@ def results(request):
         form = ResultForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Vysledek byl pridan.")
+            messages.success(request, "Výsledek byl přidán.")
             return redirect("results")
     else:
         form = ResultForm()

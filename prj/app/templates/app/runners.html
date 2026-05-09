@@ -1,13 +1,13 @@
 {% extends "app/base.html" %}
 
-{% block title %}RunBase | Bezci{% endblock %}
+{% block title %}RunBase | Běžci{% endblock %}
 
 {% block content %}
 <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4">
     <div>
         <p class="text-uppercase fw-bold muted mb-2">Startovni pole</p>
-        <h1 class="h2 mb-1">Bezci</h1>
-        <p class="muted mb-0">Databaze zavodniku, ktere lze priradit k vysledkum.</p>
+        <h1 class="h2 mb-1">Běžci</h1>
+        <p class="muted mb-0">Databáze závodníků, které lze přiřadit k výsledkům.</p>
     </div>
 </div>
 
@@ -15,14 +15,14 @@
     <div class="col-lg-8">
         <div class="panel">
             <div class="panel-header">
-                <h2 class="h5 mb-0">Seznam bezcu</h2>
+                <h2 class="h5 mb-0">Seznam běžců</h2>
             </div>
             <div class="table-responsive">
                 <table class="table table-hover align-middle">
                     <thead>
                         <tr>
-                            <th>Jmeno</th>
-                            <th>Datum narozeni</th>
+                            <th>Jméno</th>
+                            <th>Datum narození</th>
                             <th>Klub</th>
                         </tr>
                     </thead>
@@ -34,7 +34,7 @@
                                 <td>{{ runner.club|default:"-" }}</td>
                             </tr>
                         {% empty %}
-                            <tr><td colspan="3" class="text-center muted py-4">Zadni bezci zatim nejsou zadani.</td></tr>
+                            <tr><td colspan="3" class="text-center muted py-4">Žádní běžci zatím nejsou zadaní.</td></tr>
                         {% endfor %}
                     </tbody>
                 </table>
@@ -44,12 +44,12 @@
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-header">
-                <h2 class="h5 mb-0">Pridat bezce</h2>
+                <h2 class="h5 mb-0">Přidat běžce</h2>
             </div>
             <div class="panel-body">
                 <form method="post" novalidate>
                     {% include "app/_form.html" %}
-                    <button type="submit" class="btn btn-success w-100">Ulozit bezce</button>
+                    <button type="submit" class="btn btn-success w-100">Uložit běžce</button>
                 </form>
             </div>
         </div>

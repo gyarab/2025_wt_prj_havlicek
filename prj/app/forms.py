@@ -15,10 +15,10 @@ class RaceForm(forms.ModelForm):
             "date": DateInput(),
         }
         labels = {
-            "name": "Nazev behu",
+            "name": "Název běhu",
             "date": "Datum",
-            "location": "Misto",
-            "distance_m": "Delka trati (m)",
+            "location": "Místo",
+            "distance_m": "Délka trati (m)",
         }
 
     def __init__(self, *args, **kwargs):
@@ -34,9 +34,9 @@ class RunnerForm(forms.ModelForm):
             "birth_date": DateInput(),
         }
         labels = {
-            "first_name": "Jmeno",
-            "last_name": "Prijmeni",
-            "birth_date": "Datum narozeni",
+            "first_name": "Jméno",
+            "last_name": "Příjmení",
+            "birth_date": "Datum narození",
             "club": "Klub",
         }
 
@@ -50,10 +50,10 @@ class ResultForm(forms.ModelForm):
         model = Result
         fields = ["runner", "race", "time_seconds", "position"]
         labels = {
-            "runner": "Bezec",
-            "race": "Beh",
-            "time_seconds": "Cas (sekundy)",
-            "position": "Umisteni",
+            "runner": "Běžec",
+            "race": "Běh",
+            "time_seconds": "Čas (sekundy)",
+            "position": "Umístění",
         }
 
     def __init__(self, *args, **kwargs):

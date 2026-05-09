@@ -1,19 +1,19 @@
 {% extends "app/base.html" %}
 
-{% block title %}RunBase | Prehled{% endblock %}
+{% block title %}RunBase | Přehled{% endblock %}
 
 {% block content %}
 <section class="row align-items-center g-4 mb-4">
     <div class="col-lg-7">
-        <p class="text-uppercase fw-bold muted mb-2">Evidence atletickych zavodu</p>
-        <h1 class="display-5 fw-bold mb-3">Sprava behu, bezcu a vysledku na jednom miste.</h1>
+        <p class="text-uppercase fw-bold muted mb-2">Evidence atletických závodů</p>
+        <h1 class="display-5 fw-bold mb-3">Správa běhů, běžců a výsledků na jednom místě.</h1>
         <p class="lead muted mb-4">
-            RunBase slouzi pro rychle zapisovani zavodu a vykonu. Neni potreba prihlaseni,
-            takze nove behy, bezce i vysledky muze pridat kdokoliv primo z webu.
+            RunBase slouží pro rychlé zapisování závodů a výkonů. Není potřeba přihlášení,
+            takže nové běhy, běžce i výsledky může přidat kdokoliv přímo z webu.
         </p>
         <div class="d-flex flex-wrap gap-2">
-            <a href="{% url 'races' %}" class="btn btn-success btn-lg">Pridat beh</a>
-            <a href="{% url 'results' %}" class="btn btn-outline-dark btn-lg">Zapsat vysledek</a>
+            <a href="{% url 'races' %}" class="btn btn-success btn-lg">Přidat běh</a>
+            <a href="{% url 'results' %}" class="btn btn-outline-dark btn-lg">Zapsat výsledek</a>
         </div>
     </div>
     <div class="col-lg-5">
@@ -23,19 +23,19 @@
                     <div class="col-4">
                         <div class="metric">
                             <strong>{{ race_count }}</strong>
-                            <span class="muted">behu</span>
+                            <span class="muted">běhů</span>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="metric">
                             <strong>{{ runner_count }}</strong>
-                            <span class="muted">bezcu</span>
+                            <span class="muted">běžců</span>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="metric">
                             <strong>{{ result_count }}</strong>
-                            <span class="muted">vysledku</span>
+                            <span class="muted">výsledků</span>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
     <div class="col-lg-6">
         <div class="panel h-100">
             <div class="panel-header">
-                <h2 class="h5 mb-0">Nejnovejsi behy</h2>
+                <h2 class="h5 mb-0">Nejnovější běhy</h2>
             </div>
             <div class="panel-body">
                 {% for race in latest_races %}
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 {% empty %}
-                    <p class="muted mb-0">Zatim nejsou zadane zadne behy.</p>
+                    <p class="muted mb-0">Zatím nejsou zadané žádné běhy.</p>
                 {% endfor %}
             </div>
         </div>
@@ -71,7 +71,7 @@
     <div class="col-lg-6">
         <div class="panel h-100">
             <div class="panel-header">
-                <h2 class="h5 mb-0">Posledni vysledky</h2>
+                <h2 class="h5 mb-0">Poslední výsledky</h2>
             </div>
             <div class="panel-body">
                 {% for result in latest_results %}
@@ -82,11 +82,11 @@
                         </div>
                         <div class="text-end">
                             <div>{{ result.time_seconds }} s</div>
-                            <div class="muted">{% if result.position %}{{ result.position }}. misto{% else %}-{% endif %}</div>
+                            <div class="muted">{% if result.position %}{{ result.position }}. místo{% else %}-{% endif %}</div>
                         </div>
                     </div>
                 {% empty %}
-                    <p class="muted mb-0">Zatim nejsou zadane zadne vysledky.</p>
+                    <p class="muted mb-0">Zatím nejsou zadané žádné výsledky.</p>
                 {% endfor %}
             </div>
         </div>

@@ -1,13 +1,13 @@
 {% extends "app/base.html" %}
 
-{% block title %}RunBase | Behy{% endblock %}
+{% block title %}RunBase | Běhy{% endblock %}
 
 {% block content %}
 <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4">
     <div>
         <p class="text-uppercase fw-bold muted mb-2">Kalendar</p>
-        <h1 class="h2 mb-1">Behy</h1>
-        <p class="muted mb-0">Prehled zavodu a verejny formular pro pridani noveho behu.</p>
+        <h1 class="h2 mb-1">Běhy</h1>
+        <p class="muted mb-0">Přehled závodů a veřejný formulář pro přidání nového běhu.</p>
     </div>
 </div>
 
@@ -15,16 +15,16 @@
     <div class="col-lg-8">
         <div class="panel">
             <div class="panel-header">
-                <h2 class="h5 mb-0">Seznam behu</h2>
+                <h2 class="h5 mb-0">Seznam běhů</h2>
             </div>
             <div class="table-responsive">
                 <table class="table table-hover align-middle">
                     <thead>
                         <tr>
-                            <th>Nazev</th>
+                            <th>Název</th>
                             <th>Datum</th>
-                            <th>Misto</th>
-                            <th>Delka</th>
+                            <th>Místo</th>
+                            <th>Délka</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,7 +36,7 @@
                                 <td>{{ race.distance_m }} m</td>
                             </tr>
                         {% empty %}
-                            <tr><td colspan="4" class="text-center muted py-4">Zadne behy zatim nejsou zadane.</td></tr>
+                            <tr><td colspan="4" class="text-center muted py-4">Žádné běhy zatím nejsou zadané.</td></tr>
                         {% endfor %}
                     </tbody>
                 </table>
@@ -46,12 +46,12 @@
     <div class="col-lg-4">
         <div class="panel">
             <div class="panel-header">
-                <h2 class="h5 mb-0">Pridat beh</h2>
+                <h2 class="h5 mb-0">Přidat běh</h2>
             </div>
             <div class="panel-body">
                 <form method="post" novalidate>
                     {% include "app/_form.html" %}
-                    <button type="submit" class="btn btn-success w-100">Ulozit beh</button>
+                    <button type="submit" class="btn btn-success w-100">Uložit běh</button>
                 </form>
             </div>
         </div>

@@ -7,7 +7,7 @@ class RunnerApiTests(TestCase):
     def setUp(self):
         self.runner = Runner.objects.create(
             first_name="Anna",
-            last_name="Kovarova",
+            last_name="Kovářová",
             birth_date="2009-11-05",
             club="AC Pardubice",
         )
@@ -22,7 +22,7 @@ class RunnerApiTests(TestCase):
         response = self.client.get(f"/api/runner/{self.runner.id}")
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json()["last_name"], "Kovarova")
+        self.assertEqual(response.json()["last_name"], "Kovářová")
 
     def test_create_runner(self):
         response = self.client.post(
@@ -44,7 +44,7 @@ class RunnerApiTests(TestCase):
             f"/api/runner/{self.runner.id}",
             {
                 "first_name": "Anna",
-                "last_name": "Novakova",
+                "last_name": "Nováková",
                 "birth_date": "2009-11-05",
                 "club": "AC Pardubice",
             },
@@ -53,13 +53,13 @@ class RunnerApiTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.runner.refresh_from_db()
-        self.assertEqual(self.runner.last_name, "Novakova")
+        self.assertEqual(self.runner.last_name, "Nováková")
 
 
 class RaceApiTests(TestCase):
     def setUp(self):
         self.race = Race.objects.create(
-            name="Test beh",
+            name="Testovací běh",
             date="2026-06-20",
             location="Praha",
             distance_m=5000,
@@ -69,7 +69,7 @@ class RaceApiTests(TestCase):
         response = self.client.get("/api/race")
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json()[0]["name"], "Test beh")
+        self.assertEqual(response.json()[0]["name"], "Testovací běh")
 
     def test_get_race_detail(self):
         response = self.client.get(f"/api/race/{self.race.id}")
@@ -81,7 +81,7 @@ class RaceApiTests(TestCase):
         response = self.client.post(
             "/api/race",
             {
-                "name": "Vecerni beh",
+                "name": "Večerní běh",
                 "date": "2026-07-12",
                 "location": "Brno",
                 "distance_m": 10000,
@@ -90,15 +90,15 @@ class RaceApiTests(TestCase):
         )
 
         self.assertEqual(response.status_code, 201)
-        self.assertTrue(Race.objects.filter(name="Vecerni beh").exists())
+        self.assertTrue(Race.objects.filter(name="Večerní běh").exists())
 
     def test_update_race(self):
         response = self.client.put(
             f"/api/race/{self.race.id}",
             {
-                "name": "Test beh",
+                "name": "Testovací běh",
                 "date": "2026-06-20",
-                "location": "Plzen",
+                "location": "Plzeň",
                 "distance_m": 5000,
             },
             content_type="application/json",
@@ -106,14 +106,14 @@ class RaceApiTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.race.refresh_from_db()
-        self.assertEqual(self.race.location, "Plzen")
+        self.assertEqual(self.race.location, "Plzeň")
 
 
 class ResultApiTests(TestCase):
     def setUp(self):
-        self.runner = Runner.objects.create(first_name="Eva", last_name="Dlouha")
+        self.runner = Runner.objects.create(first_name="Eva", last_name="Dlouhá")
         self.race = Race.objects.create(
-            name="Test beh",
+            name="Testovací běh",
             date="2026-06-20",
             location="Praha",
             distance_m=5000,
@@ -171,13 +171,13 @@ class ResultApiTests(TestCase):
 
 class PublicFormTests(TestCase):
     def setUp(self):
-        self.runner = Runner.objects.create(first_name="Eva", last_name="Dlouha")
+        self.runner = Runner.objects.create(first_name="Eva", last_name="Dlouhá")
 
     def test_create_race_without_login(self):
         response = self.client.post(
             "/races/",
             {
-                "name": "Mestsky beh",
+                "name": "Městský běh",
                 "date": "2026-06-20",
                 "location": "Praha",
                 "distance_m": 5000,
@@ -185,25 +185,25 @@ class PublicFormTests(TestCase):
         )
 
         self.assertRedirects(response, "/races/")
-        self.assertTrue(Race.objects.filter(name="Mestsky beh").exists())
+        self.assertTrue(Race.objects.filter(name="Městský běh").exists())
 
     def test_create_runner_without_login(self):
         response = self.client.post(
             "/runners/",
             {
                 "first_name": "Petr",
-                "last_name": "Rychly",
+                "last_name": "Rychlý",
                 "birth_date": "2008-04-12",
                 "club": "SK Brno",
             },
         )
 
         self.assertRedirects(response, "/runners/")
-        self.assertTrue(Runner.objects.filter(last_name="Rychly").exists())
+        self.assertTrue(Runner.objects.filter(last_name="Rychlý").exists())
 
     def test_create_result_without_login(self):
         race = Race.objects.create(
-            name="Test beh",
+            name="Testovací běh",
             date="2026-06-20",
             location="Praha",
             distance_m=5000,
