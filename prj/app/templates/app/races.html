@@ -1,29 +1,60 @@
 {% extends "app/base.html" %}
 
-{% block title %}Races{% endblock %}
+{% block title %}RunBase | Behy{% endblock %}
 
 {% block content %}
-<h2>Seznam závodů</h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Location</th>
-            <th>Distance (m)</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for race in races %}
-        <tr>
-            <td>{{ race.name }}</td>
-            <td>{{ race.date }}</td>
-            <td>{{ race.location }}</td>
-            <td>{{ race.distance_m }}</td>
-        </tr>
-        {% empty %}
-        <tr><td colspan="4">Žádné závody</td></tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4">
+    <div>
+        <p class="text-uppercase fw-bold muted mb-2">Kalendar</p>
+        <h1 class="h2 mb-1">Behy</h1>
+        <p class="muted mb-0">Prehled zavodu a verejny formular pro pridani noveho behu.</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="panel">
+            <div class="panel-header">
+                <h2 class="h5 mb-0">Seznam behu</h2>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Nazev</th>
+                            <th>Datum</th>
+                            <th>Misto</th>
+                            <th>Delka</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for race in races %}
+                            <tr>
+                                <td class="fw-semibold">{{ race.name }}</td>
+                                <td>{{ race.date|date:"d.m.Y" }}</td>
+                                <td>{{ race.location }}</td>
+                                <td>{{ race.distance_m }} m</td>
+                            </tr>
+                        {% empty %}
+                            <tr><td colspan="4" class="text-center muted py-4">Zadne behy zatim nejsou zadane.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel">
+            <div class="panel-header">
+                <h2 class="h5 mb-0">Pridat beh</h2>
+            </div>
+            <div class="panel-body">
+                <form method="post" novalidate>
+                    {% include "app/_form.html" %}
+                    <button type="submit" class="btn btn-success w-100">Ulozit beh</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

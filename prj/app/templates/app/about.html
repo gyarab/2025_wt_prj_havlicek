@@ -1,16 +1,21 @@
 {% extends "app/base.html" %}
 
-{% block title %}About{% endblock %}
+{% block title %}RunBase | O projektu{% endblock %}
 
 {% block content %}
-<div class="text-center">
-    <h1 class="mb-4">O projektu</h1>
-    <p><strong>RunBase</strong> je webová aplikace určená pro evidenci a správu atletických závodů a výkonů. 
-        Poskytuje uživatelsky přívětivé prostředí pro prohlížení seznamu závodů, 
-        výsledků běžců a detailních informací o jednotlivých závodech a sportovcích. 
-        Aplikace využívá základní dědění šablon pro jednotný vzhled všech stránek, responzivní design pomocí 
-        <strong>Bootstrap</strong> a je připravena na propojení s databázovými modely a URL routingem. 
-        <strong>RunBase</strong> slouží jako startovací kostra pro tvorbu plnohodnotné sportovní databáze, 
-        kde mohou registrovaní uživatelé přidávat výsledky, komentáře a administrátoři spravovat celý obsah.</p>
+<div class="panel">
+    <div class="panel-header">
+        <h1 class="h3 mb-0">O projektu</h1>
+    </div>
+    <div class="panel-body">
+        <p class="lead muted">
+            RunBase je jednoducha Django aplikace pro evidenci atletickych behu, bezcu a vysledku.
+        </p>
+        <p class="mb-0">
+            Cilem je mit prehlednou databazi, kde jde rychle pridat novy zavod, zapsat bezce
+            a ulozit jeho cas. Verejna cast webu je dostupna bez prihlaseni, administrace zustava
+            k dispozici na adrese <a href="/admin/">/admin/</a>.
+        </p>
+    </div>
 </div>
 {% endblock %}

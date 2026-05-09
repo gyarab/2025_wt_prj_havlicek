@@ -1,16 +1,95 @@
 {% extends "app/base.html" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}RunBase | Prehled{% endblock %}
 
 {% block content %}
-<div class="text-center my-5">
-    <h1 class="mb-4">Vítej na <strong>RunBase</strong></h1>
-    
-    <p><strong>RunBase</strong> je webová aplikace určená pro evidenci a správu atletických závodů a výkonů. Poskytuje uživatelsky přívětivé prostředí pro prohlížení seznamu závodů, výsledků běžců a detailních informací o jednotlivých závodech a sportovcích. Aplikace využívá základní dědění šablon pro jednotný vzhled všech stránek, responzivní design pomocí <strong>Bootstrap</strong> a je připravena na propojení s databázovými modely a URL routingem. <strong>RunBase</strong> slouží jako startovací kostra pro tvorbu plnohodnotné sportovní databáze, kde mohou registrovaní uživatelé přidávat výsledky, komentáře a administrátoři spravovat celý obsah.</p>
-    
-    <div class="mt-4">
-        <a href="{% url 'races' %}" class="btn btn-primary btn-lg me-2">Seznam závodů</a>
-        <a href="{% url 'runners' %}" class="btn btn-secondary btn-lg">Seznam běžců</a>
+<section class="row align-items-center g-4 mb-4">
+    <div class="col-lg-7">
+        <p class="text-uppercase fw-bold muted mb-2">Evidence atletickych zavodu</p>
+        <h1 class="display-5 fw-bold mb-3">Sprava behu, bezcu a vysledku na jednom miste.</h1>
+        <p class="lead muted mb-4">
+            RunBase slouzi pro rychle zapisovani zavodu a vykonu. Neni potreba prihlaseni,
+            takze nove behy, bezce i vysledky muze pridat kdokoliv primo z webu.
+        </p>
+        <div class="d-flex flex-wrap gap-2">
+            <a href="{% url 'races' %}" class="btn btn-success btn-lg">Pridat beh</a>
+            <a href="{% url 'results' %}" class="btn btn-outline-dark btn-lg">Zapsat vysledek</a>
+        </div>
     </div>
-</div>
+    <div class="col-lg-5">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="row g-3">
+                    <div class="col-4">
+                        <div class="metric">
+                            <strong>{{ race_count }}</strong>
+                            <span class="muted">behu</span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="metric">
+                            <strong>{{ runner_count }}</strong>
+                            <span class="muted">bezcu</span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="metric">
+                            <strong>{{ result_count }}</strong>
+                            <span class="muted">vysledku</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="row g-4">
+    <div class="col-lg-6">
+        <div class="panel h-100">
+            <div class="panel-header">
+                <h2 class="h5 mb-0">Nejnovejsi behy</h2>
+            </div>
+            <div class="panel-body">
+                {% for race in latest_races %}
+                    <div class="d-flex justify-content-between border-bottom py-2">
+                        <div>
+                            <strong>{{ race.name }}</strong>
+                            <div class="muted">{{ race.location }}</div>
+                        </div>
+                        <div class="text-end">
+                            <div>{{ race.date|date:"d.m.Y" }}</div>
+                            <div class="muted">{{ race.distance_m }} m</div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p class="muted mb-0">Zatim nejsou zadane zadne behy.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel h-100">
+            <div class="panel-header">
+                <h2 class="h5 mb-0">Posledni vysledky</h2>
+            </div>
+            <div class="panel-body">
+                {% for result in latest_results %}
+                    <div class="d-flex justify-content-between border-bottom py-2">
+                        <div>
+                            <strong>{{ result.runner }}</strong>
+                            <div class="muted">{{ result.race.name }}</div>
+                        </div>
+                        <div class="text-end">
+                            <div>{{ result.time_seconds }} s</div>
+                            <div class="muted">{% if result.position %}{{ result.position }}. misto{% else %}-{% endif %}</div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p class="muted mb-0">Zatim nejsou zadane zadne vysledky.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
