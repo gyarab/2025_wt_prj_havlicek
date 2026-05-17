@@ -20,6 +20,10 @@ def about(request):
     return render(request, "app/about.html")
 
 
+def api_playground(request):
+    return render(request, "app/api_playground.html")
+
+
 def races(request):
     if request.method == "POST":
         form = RaceForm(request.POST)

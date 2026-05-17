@@ -1,0 +1,148 @@
+{% extends "app/base.html" %}
+
+{% block title %}RunBase | API playground{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4">
+    <div>
+        <p class="text-uppercase fw-bold muted mb-2">JavaScript fetch()</p>
+        <h1 class="h2 mb-1">API playground</h1>
+        <p class="muted mb-0">Vyzkousejte verejne API pro model bezcu primo z prohlizece.</p>
+    </div>
+    <a href="/api/docs" class="btn btn-outline-dark">API dokumentace</a>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-4">
+        <div class="panel">
+            <div class="panel-header">
+                <h2 class="h5 mb-0">Dotaz na endpoint</h2>
+            </div>
+            <div class="panel-body">
+                <label for="runner-id">ID bezce</label>
+                <input id="runner-id" class="form-control mb-3" type="number" min="1" placeholder="napr. 1">
+
+                <div class="d-grid gap-2">
+                    <button id="load-one" class="btn btn-primary" type="button">Nacist bezce podle ID</button>
+                    <button id="load-all" class="btn btn-outline-dark" type="button">Nacist vsechny bezce</button>
+                </div>
+
+                <p class="muted small mt-3 mb-0">
+                    Tlacitka spousti asynchronni volani <code>fetch()</code>. Odpoved API prijde jako
+                    <code>Promise</code>, kterou JavaScript zpracuje az po dokonceni requestu.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="panel">
+            <div class="panel-header d-flex justify-content-between align-items-center gap-3">
+                <h2 class="h5 mb-0">Odpoved serveru</h2>
+                <span id="status" class="badge text-bg-secondary">Ceka na akci</span>
+            </div>
+            <div class="panel-body">
+                <div id="message" class="alert alert-info mb-3">
+                    Zadejte ID bezce nebo nactete cely seznam.
+                </div>
+                <div id="result"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const statusEl = document.querySelector("#status");
+    const messageEl = document.querySelector("#message");
+    const resultEl = document.querySelector("#result");
+    const runnerIdInput = document.querySelector("#runner-id");
+
+    function setStatus(text, type = "secondary") {
+        statusEl.className = `badge text-bg-${type}`;
+        statusEl.textContent = text;
+    }
+
+    function setMessage(text, type = "info") {
+        messageEl.className = `alert alert-${type} mb-3`;
+        messageEl.textContent = text;
+    }
+
+    function runnerRow(runner) {
+        return `
+            <tr>
+                <td class="fw-semibold">${runner.first_name} ${runner.last_name}</td>
+                <td>${runner.birth_date || "-"}</td>
+                <td>${runner.club || "-"}</td>
+                <td class="text-end">${runner.id}</td>
+            </tr>
+        `;
+    }
+
+    function renderRunners(runners) {
+        const runnerList = Array.isArray(runners) ? runners : [runners];
+
+        if (runnerList.length === 0) {
+            resultEl.innerHTML = `<p class="muted mb-0">API vratilo prazdny seznam.</p>`;
+            return;
+        }
+
+        resultEl.innerHTML = `
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Jmeno</th>
+                            <th>Datum narozeni</th>
+                            <th>Klub</th>
+                            <th class="text-end">ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${runnerList.map(runnerRow).join("")}
+                    </tbody>
+                </table>
+            </div>
+        `;
+    }
+
+    async function loadEndpoint(url) {
+        setStatus("Nacitam", "warning");
+        setMessage(`Volam endpoint ${url}`, "info");
+        resultEl.innerHTML = "";
+
+        try {
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error(`Server vratil stav ${response.status}`);
+            }
+
+            const data = await response.json();
+            renderRunners(data);
+            setStatus("Hotovo", "success");
+            setMessage("Data byla uspesne nactena a zpracovana v JavaScriptu.", "success");
+        } catch (error) {
+            setStatus("Chyba", "danger");
+            setMessage(error.message, "danger");
+            resultEl.innerHTML = "";
+        }
+    }
+
+    document.querySelector("#load-all").addEventListener("click", () => {
+        loadEndpoint("/api/runner");
+    });
+
+    document.querySelector("#load-one").addEventListener("click", () => {
+        const runnerId = runnerIdInput.value.trim();
+
+        if (!runnerId) {
+            setStatus("Chybi ID", "warning");
+            setMessage("Nejdrive zadejte ID bezce.", "warning");
+            runnerIdInput.focus();
+            return;
+        }
+
+        loadEndpoint(`/api/runner/${runnerId}`);
+    });
+</script>
+{% endblock %}
