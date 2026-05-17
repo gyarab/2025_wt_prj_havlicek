@@ -24,5 +24,13 @@ class Result(models.Model):
     time_seconds = models.FloatField()  # čas v sekundách
     position = models.PositiveIntegerField(null=True, blank=True)  # pořadí
 
+    @property
+    def formatted_time(self):
+        total_seconds = int(self.time_seconds)
+        hours = total_seconds // 3600
+        minutes = (total_seconds % 3600) // 60
+        seconds = total_seconds % 60
+        return f"{hours:02}:{minutes:02}:{seconds:02}"
+
     def __str__(self):
-        return f"{self.runner} – {self.race}: {self.time_seconds}s"
+        return f"{self.runner} – {self.race}: {self.formatted_time}"

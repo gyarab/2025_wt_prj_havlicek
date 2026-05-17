@@ -137,6 +137,9 @@ class ResultApiTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["race_id"], self.race.id)
 
+    def test_result_formats_seconds_as_time(self):
+        self.assertEqual(self.result.formatted_time, "00:20:34")
+
     def test_create_result(self):
         response = self.client.post(
             "/api/result",

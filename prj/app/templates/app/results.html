@@ -35,7 +35,7 @@
                                     <div class="muted">{{ result.race.date|date:"d.m.Y" }}</div>
                                 </td>
                                 <td>{{ result.runner }}</td>
-                                <td>{{ result.time_seconds }} s</td>
+                                <td>{{ result.formatted_time }}</td>
                                 <td>{% if result.position %}{{ result.position }}.{% else %}-{% endif %}</td>
                             </tr>
                         {% empty %}
