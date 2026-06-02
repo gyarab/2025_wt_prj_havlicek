@@ -15,4 +15,6 @@ __pycache__/
 # IDE a editor specifické soubory
 .vscode/
 .idea/
-.claude/
+
+# Node
+node_modules/
